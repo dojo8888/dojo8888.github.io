@@ -6,7 +6,9 @@
       <meta name="viewport" content="width=device-width, initial-scale=1">
       <meta name="description" content="">
       <meta name="author" content="">
-      <link rel="icon" href="../../favicon.ico">
+
+      <link rel="icon" href="../favicon.ico">
+      <link rel="manifest" href="./manifest.json">
       <title>TEST</title>    
       <link href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" rel="stylesheet">
       <script src="//code.jquery.com/jquery.min.js"></script>
@@ -49,7 +51,7 @@
         The path of the provided scope ('/') is not under the max scope allowed ('/web_fcm/'). 
         Adjust the scope, move the Service Worker script, or use the Service-Worker-Allowed HTTP header to allow the scope.
         */
-      navigator.serviceWorker.register("/web_fcm/firebase-messaging-sw.js", {scope : './'}).then(function(registration) {
+      navigator.serviceWorker.register("/web_fcm/firebase-messaging-sw.js", {scope : '/web_fcm'}).then(function(registration) {
         // Registration was successful
         console.log('ServiceWorker registration successful with scope: ', registration.scope);
       }).catch(function(err) {
