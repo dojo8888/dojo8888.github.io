@@ -17,14 +17,34 @@
 <script src="https://www.gstatic.com/firebasejs/3.7.2/firebase.js"></script>
 <script type="text/javascript">
   // Initialize Firebase
-  var config = {
-    apiKey: "AIzaSyB9zcIc1TpWX76Y9idkUgzPsDQrfCrW-T0",
-    authDomain: "tank-6d5d3.firebaseapp.com",
-    databaseURL: "https://tank-6d5d3.firebaseio.com",
-    storageBucket: "tank-6d5d3.appspot.com",
-    messagingSenderId: "918636476327"
-  };
-  firebase.initializeApp(config);
+  if ('serviceWorker' in navigator){
+      window.addEventListener('load', function() {
+        // scope 
+        /*
+        ServiceWorker registration failed:  DOMException: Failed to register a ServiceWorker: 
+        The path of the provided scope ('/') is not under the max scope allowed ('/web_fcm/'). 
+        Adjust the scope, move the Service Worker script, or use the Service-Worker-Allowed HTTP header to allow the scope.
+        */
+      navigator.serviceWorker.register("/web_fcm/firebase-messaging-sw.js", {scope : '/web_fcm/'}).then(function(registration) {
+        // Registration was successful
+        console.log('ServiceWorker registration successful with scope: ', registration.scope);
+      }).catch(function(err) {
+        // registration failed :(
+        console.log('ServiceWorker registration failed: ', err);
+      });
+    });
+  }
+
+
+
+  // var config = {
+  //   apiKey: "AIzaSyB9zcIc1TpWX76Y9idkUgzPsDQrfCrW-T0",
+  //   authDomain: "tank-6d5d3.firebaseapp.com",
+  //   databaseURL: "https://tank-6d5d3.firebaseio.com",
+  //   storageBucket: "tank-6d5d3.appspot.com",
+  //   messagingSenderId: "918636476327"
+  // };
+  // firebase.initializeApp(config);
 
   const messaging = firebase.messaging();
   
@@ -59,31 +79,33 @@
     console.log('Unable to get permission to notify.', err);
   });
 
-  
+
+  messaging.onTokenRefresh(function() {
+    messaging.getToken()
+    .then(function(refreshedToken) {
+      console.log('Token refreshed.', refreshedToken);
+      // // Indicate that the new Instance ID token has not yet been sent to the
+      // // app server.
+      // setTokenSentToServer(false);
+      // // Send Instance ID token to app server.
+      // sendTokenToServer(refreshedToken);
+      // // [START_EXCLUDE]
+      // // Display new Instance ID token and clear UI of all previous messages.
+      // resetUI();
+      // // [END_EXCLUDE]
+    })
+    .catch(function(err) {
+      console.log('Unable to retrieve refreshed token ', err);
+      // showToken('Unable to retrieve refreshed token ', err);
+    });
+  });
+
 
 
   messaging.onMessage(function(payload) {
     console.log("Message received. ", payload);
     // ...
   });
-  
-  if ('serviceWorker' in navigator){
-      window.addEventListener('load', function() {
-        // scope 
-        /*
-        ServiceWorker registration failed:  DOMException: Failed to register a ServiceWorker: 
-        The path of the provided scope ('/') is not under the max scope allowed ('/web_fcm/'). 
-        Adjust the scope, move the Service Worker script, or use the Service-Worker-Allowed HTTP header to allow the scope.
-        */
-      navigator.serviceWorker.register("/web_fcm/firebase-messaging-sw.js", {scope : '/web_fcm/'}).then(function(registration) {
-        // Registration was successful
-        console.log('ServiceWorker registration successful with scope: ', registration.scope);
-      }).catch(function(err) {
-        // registration failed :(
-        console.log('ServiceWorker registration failed: ', err);
-      });
-    });
-  }
 </script>
 </body>
 </html>
