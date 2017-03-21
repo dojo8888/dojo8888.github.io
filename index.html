@@ -19,44 +19,44 @@
 if ('serviceWorker' in navigator){
     window.addEventListener('load', function() {
 
-		var registerService = function(){
-		    navigator.serviceWorker.register("/firebase-messaging-sw.js", {scope : '/'}).then(function(registration) {
-		    	console.log('ServiceWorker registration successful with scope: ', registration.scope);
+		
+	    navigator.serviceWorker.register("/firebase-messaging-sw.js", {scope : '/'}).then(function(registration) {
+			console.log('ServiceWorker registration successful with scope: ', registration.scope);
 
-		    	var config = {
-					apiKey: "AIzaSyB9zcIc1TpWX76Y9idkUgzPsDQrfCrW-T0",
-					authDomain: "tank-6d5d3.firebaseapp.com",
-					databaseURL: "https://tank-6d5d3.firebaseio.com",
-					storageBucket: "tank-6d5d3.appspot.com",
-					messagingSenderId: "918636476327"
-				};
+			var config = {
+				apiKey: "AIzaSyB9zcIc1TpWX76Y9idkUgzPsDQrfCrW-T0",
+				authDomain: "tank-6d5d3.firebaseapp.com",
+				databaseURL: "https://tank-6d5d3.firebaseio.com",
+				storageBucket: "tank-6d5d3.appspot.com",
+				messagingSenderId: "918636476327"
+			};
 
-				firebase.initializeApp(config);
+			firebase.initializeApp(config);
 
-				const messaging = firebase.messaging();
-				  
-				messaging.requestPermission()
-				.then(function() {
-					console.log('Notification permission granted.');
-					// firebase-messagin-sw.js 를 로드하고 service worker (background only) 를 등록한다.
-					// 반드시 해당 파일명은 위와 같아야 한다.
-					messaging.useServiceWorker(registration);
-					return messaging.getToken()
-				})
-				.then(function(token){
-					console.log('Token - ', token);
-				})
-				.catch(function(err) {
-					console.log('Error ', err);
-				});
-
-
-				
-			}).catch(function(err) {
-				// registration failed :(
-				console.log('ServiceWorker registration failed: ', err);
+			const messaging = firebase.messaging();
+			  
+			messaging.requestPermission()
+			.then(function() {
+				console.log('Notification permission granted.');
+				// firebase-messagin-sw.js 를 로드하고 service worker (background only) 를 등록한다.
+				// 반드시 해당 파일명은 위와 같아야 한다.
+				messaging.useServiceWorker(registration);
+				return messaging.getToken()
+			})
+			.then(function(token){
+				console.log('Token - ', token);
+			})
+			.catch(function(err) {
+				console.log('Error ', err);
 			});
-		}
+
+
+			
+		}).catch(function(err) {
+			// registration failed :(
+			console.log('ServiceWorker registration failed: ', err);
+		});
+		
 
 
 
