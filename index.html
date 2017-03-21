@@ -59,10 +59,13 @@ if ('serviceWorker' in navigator){
 			console.log('ServiceWorker registration failed: ', err);
 		});
 		
-
-
-
 	});
+
+	messaging.onMessage(function(payload) {
+		console.log('onMessage: ', payload);
+	});
+
+
 }
 
 
