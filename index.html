@@ -16,9 +16,9 @@
 <body>
 <script src="https://www.gstatic.com/firebasejs/3.7.2/firebase.js"></script>
 <script type="text/javascript">
-if ('serviceWorker' in navigator){
-
-	var config = {
+// Initialises firebase
+// TODO: fill in firebase config information
+var config = {
 				apiKey: "AIzaSyB9zcIc1TpWX76Y9idkUgzPsDQrfCrW-T0",
 				authDomain: "tank-6d5d3.firebaseapp.com",
 				databaseURL: "https://tank-6d5d3.firebaseio.com",
@@ -26,46 +26,45 @@ if ('serviceWorker' in navigator){
 				messagingSenderId: "918636476327"
 			};
 
-	firebase.initializeApp(config);
-	const messaging = firebase.messaging();
+firebase.initializeApp(config);
+var messaging = firebase.messaging();
 
-
-
-    window.addEventListener('load', function() {
-
-	    navigator.serviceWorker.register("/firebase-messaging-sw.js", {scope : '/'}).then(function(registration) {
-			console.log('ServiceWorker registration successful with scope: ', registration.scope);
-			messaging.useServiceWorker(registration);
-
-			  
-			messaging.requestPermission()
-			.then(function() {
-				console.log('Notification permission granted.');
-				// firebase-messagin-sw.js 를 로드하고 service worker (background only) 를 등록한다.
-				// 반드시 해당 파일명은 위와 같아야 한다.
-				return messaging.getToken()
-			})
-			.then(function(token){
-				console.log('Token - ', token);
-			})
-			.catch(function(err) {
-				console.log('Error ', err);
-			});
-
-
-			
-		}).catch(function(err) {
-			// registration failed :(
-			console.log('ServiceWorker registration failed: ', err);
-		});
-		
-	});
-
-	messaging.onMessage(function(payload) {
-		console.log('onMessage: ', payload);
-	});
-
-
+// On load register service worker
+if ('serviceWorker' in navigator) {
+  window.addEventListener('load', () => {
+    navigator.serviceWorker.register('/firebase-messaging-sw.js').then((registration) => {
+      // Successfully registers service worker
+      console.log('ServiceWorker registration successful with scope: ', registration.scope);
+      messaging.useServiceWorker(registration);
+    })
+    .then(() => {
+      // Requests user browser permission
+      return messaging.requestPermission();
+    })
+    .then(() => {
+      // Gets token
+      return messaging.getToken();
+    })
+    .then((token) => {
+      // Simple ajax call to send user token to server for saving
+      $.ajax({
+        type: 'POST',
+        url: '/api/setToken',
+        dataType: 'json',
+        data: JSON.stringify({token: token}),
+        contentType: 'application/json',
+        success: (data) => {
+          console.log('Success ', data);
+        },
+        error: (err) => {
+          console.log('Error ', err);
+        }
+      })
+    })
+    .catch((err) => {
+      console.log('ServiceWorker registration failed: ', err);
+    });
+  });
 }
 
 
