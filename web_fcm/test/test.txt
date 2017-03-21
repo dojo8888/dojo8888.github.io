@@ -20,3 +20,7 @@ result = push_service.notify_single_device(registration_id=registration_id,messa
 
 restricted_package_name = "com.sungju.shopMCM"
 result = push_service.notify_single_device(registration_id=registration_id,message_title=message_title,message_body=message_body, restricted_package_name=restricted_package_name)
+
+
+
+curl --header "Authorization: key=APIKEY" -application/json" https://fcm.googleapis.com/fcm/send -d "{\"registration_ids\":[\"REGISTRATIONID\"],\"notification\":{\"title\":\"test\",\"body\":\"testing\"},\"data\":{\"title\":\"erse\"}}"
