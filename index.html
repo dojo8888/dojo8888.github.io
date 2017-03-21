@@ -28,6 +28,10 @@ var config = {
 firebase.initializeApp(config);
 var messaging = firebase.messaging();
 
+messaging.onMessage(function(payload) {
+	console.log('onMessage: ', payload);
+});
+
 // On load register service worker
 if ('serviceWorker' in navigator) {
   window.addEventListener('load', () => {
@@ -46,19 +50,20 @@ if ('serviceWorker' in navigator) {
     })
     .then((token) => {
       // Simple ajax call to send user token to server for saving
-      $.ajax({
-        type: 'POST',
-        url: '/api/setToken',
-        dataType: 'json',
-        data: JSON.stringify({token: token}),
-        contentType: 'application/json',
-        success: (data) => {
-          console.log('Success ', data);
-        },
-        error: (err) => {
-          console.log('Error ', err);
-        }
-      })
+      console.log(token);
+      // $.ajax({
+      //   type: 'POST',
+      //   url: '/api/setToken',
+      //   dataType: 'json',
+      //   data: JSON.stringify({token: token}),
+      //   contentType: 'application/json',
+      //   success: (data) => {
+      //     console.log('Success ', data);
+      //   },
+      //   error: (err) => {
+      //     console.log('Error ', err);
+      //   }
+      // })
     })
     .catch((err) => {
       console.log('ServiceWorker registration failed: ', err);

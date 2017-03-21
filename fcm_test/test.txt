@@ -1,10 +1,6 @@
 AAAA1eMAN6c:APA91bEUMjwLQlUkhcJb6NZllrgIb4iLU46wMY6Ie5CKs6HV3P9d-OuWnUcxjOqjs9PXGlPkW65VDfwjuMLUZBsBSOwTIjBMYOC3wyXbhSstQBvaBjgOrL1sUYm5VTEyflInm9FyWgoq
 
 
-fmexkkKf7Uc:APA91bHM6G7tv3RZrDN0mOV9io4ct3qjYc0WeY-_fdgXQzwfqQGfSM94db-lXq6xLNk3q7FmaloZvev1_Nj_KYj73GyH-35Qk_FWA1c8tk6mawYYuUPEzgydi_SEDFcfdp5lV2HU4ZYj
-
-
-
 from pyfcm import FCMNotification
 api_key = "AAAA1eMAN6c:APA91bEUMjwLQlUkhcJb6NZllrgIb4iLU46wMY6Ie5CKs6HV3P9d-OuWnUcxjOqjs9PXGlPkW65VDfwjuMLUZBsBSOwTIjBMYOC3wyXbhSstQBvaBjgOrL1sUYm5VTEyflInm9FyWgoq"
 push_service = FCMNotification(api_key=api_key)
@@ -15,11 +11,6 @@ registration_id ="fmexkkKf7Uc:APA91bHM6G7tv3RZrDN0mOV9io4ct3qjYc0WeY-_fdgXQzwfqQ
 message_title = "Hello~"
 message_body = "Hi,can you see me?"
 result = push_service.notify_single_device(registration_id=registration_id,message_title=message_title,message_body=message_body)
-
-
-
-restricted_package_name = "com.sungju.shopMCM"
-result = push_service.notify_single_device(registration_id=registration_id,message_title=message_title,message_body=message_body, restricted_package_name=restricted_package_name)
 
 
 
