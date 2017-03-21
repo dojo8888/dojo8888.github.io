@@ -17,13 +17,8 @@
 <script src="https://www.gstatic.com/firebasejs/3.7.2/firebase.js"></script>
 <script type="text/javascript">
 if ('serviceWorker' in navigator){
-    window.addEventListener('load', function() {
 
-		
-	    navigator.serviceWorker.register("/firebase-messaging-sw.js", {scope : '/'}).then(function(registration) {
-			console.log('ServiceWorker registration successful with scope: ', registration.scope);
-
-			var config = {
+	var config = {
 				apiKey: "AIzaSyB9zcIc1TpWX76Y9idkUgzPsDQrfCrW-T0",
 				authDomain: "tank-6d5d3.firebaseapp.com",
 				databaseURL: "https://tank-6d5d3.firebaseio.com",
@@ -31,16 +26,23 @@ if ('serviceWorker' in navigator){
 				messagingSenderId: "918636476327"
 			};
 
-			firebase.initializeApp(config);
+	firebase.initializeApp(config);
+	const messaging = firebase.messaging();
 
-			const messaging = firebase.messaging();
+
+
+    window.addEventListener('load', function() {
+
+	    navigator.serviceWorker.register("/firebase-messaging-sw.js", {scope : '/'}).then(function(registration) {
+			console.log('ServiceWorker registration successful with scope: ', registration.scope);
+			messaging.useServiceWorker(registration);
+
 			  
 			messaging.requestPermission()
 			.then(function() {
 				console.log('Notification permission granted.');
 				// firebase-messagin-sw.js 를 로드하고 service worker (background only) 를 등록한다.
 				// 반드시 해당 파일명은 위와 같아야 한다.
-				messaging.useServiceWorker(registration);
 				return messaging.getToken()
 			})
 			.then(function(token){
