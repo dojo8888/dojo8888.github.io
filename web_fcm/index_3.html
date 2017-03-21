@@ -1,0 +1,101 @@
+<!DOCTYPE html>
+<html>
+  <head>
+      <meta charset="utf-8">
+      <meta http-equiv="X-UA-Compatible" content="IE=edge">
+      <meta name="viewport" content="width=device-width, initial-scale=1">
+      <meta name="description" content="">
+      <meta name="author" content="">
+
+      <link rel="icon" href="https://dojo8888.github.io/favicon.ico">
+      <link rel="manifest" href="manifest.json">
+      <title>TEST</title>    
+      <link href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" rel="stylesheet">
+      <script src="//code.jquery.com/jquery.min.js"></script>
+  </head>
+<body>
+<script src="https://www.gstatic.com/firebasejs/3.7.2/firebase.js"></script>
+<script type="text/javascript">
+  
+window.addEventListener('load', function() {
+
+  var config = {
+    apiKey: "AIzaSyB9zcIc1TpWX76Y9idkUgzPsDQrfCrW-T0",
+    authDomain: "tank-6d5d3.firebaseapp.com",
+    databaseURL: "https://tank-6d5d3.firebaseio.com",
+    storageBucket: "tank-6d5d3.appspot.com",
+    messagingSenderId: "918636476327"
+  };
+  firebase.initializeApp(config);
+
+  const messaging = firebase.messaging();
+  
+  messaging.requestPermission()
+  .then(function() {
+    console.log('Notification permission granted.');
+    // firebase-messagin-sw.js 를 로드하고 service worker (background only) 를 등록한다.
+    // 반드시 해당 파일명은 위와 같아야 한다.
+    // 아니면 직접 등록해야 한다. 
+    // return messaging.getToken(); 
+
+    return registerService();
+  })
+  .catch(function(err) {
+    console.log('Unable to get permission to notify.', err);
+  });
+
+});
+
+  var registerService = function(){
+    if ('serviceWorker' in navigator){
+      navigator.serviceWorker.register('firebase-messaging-sw.js', {scope:'./'})
+      .then(function(registration){
+        console.log('ServiceWorker registration successful with scope : ', registration.scope);
+        // const messaging = firebase.messaging();
+        // messaging.useServiceWorker(registration);
+        // return messaging.getToken();
+
+        registration.onupdatefound = function() {
+          var installingWorker = registration.installing;
+          // https://www.w3.org/TR/service-workers/#service-worker-state-attribute
+          installingWorker.onstatechange = function() {
+            switch (installingWorker.state) {
+              case 'installed':
+                if (navigator.serviceWorker.controller) {
+                  // At this point, the old content will have been purged and the fresh content will
+                  // have been added to the cache.
+                  // It's the perfect time to display a "New content is available; please refresh."
+                  // message in the page's interface.
+                  console.log('New or updated content is available.');
+                } else {
+                  // At this point, everything has been precached.
+                  // It's the perfect time to display a "Content is cached for offline use." message.
+                  console.log('Content is now available offline!');
+                }
+                break;
+
+              case 'redundant':
+                console.error('The installing service worker became redundant.');
+                console.error(installingWorker);
+                break;
+            }
+          };
+
+          installingWorker.onerror = function(err) {
+            console.log("installingWorker Erorr : ", err)
+          };
+
+
+        }
+
+      })
+      .catch(function(err){
+        console.log('ServiceWorker registrations failed : ', err);
+      })
+    }
+  }
+
+
+</script>
+</body>
+</html>
