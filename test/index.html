@@ -133,13 +133,8 @@
         link = function(url){
             var link = encodeURIComponent(url);
             var device = get_phone_type();
-            if(device == "android") {
-                // android-app://<package_name>/<scheme>/<host_path>
-                // location.href = "mcmsnack://open?link=" + link;
-
-            }else if(device =="ios") {
+            if(device == "android" || device =="ios") {
                 var send_url = "mcmsnack://open?link=" + link;
-                alert(send_url);
                 location.href = send_url;
             }else {
                 // web
