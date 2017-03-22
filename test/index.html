@@ -1,0 +1,158 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="description" content="">
+    <meta name="author" content="">
+    <link rel="icon" href="../../favicon.ico">
+    <title>TEST</title>
+    
+    <link href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" rel="stylesheet">
+    <script src="//code.jquery.com/jquery.min.js"></script>
+
+  </head>
+  <body>
+
+
+  <div class="container">
+
+    <div>
+        <h4>스넥앱 : 폰 위치 가져오기</h4>
+        <button  onclick="get_phone_location();" type="button" class="btn btn-primary">폰 위치 내놔~</button>
+    </div>
+
+    <div>
+        <h4>스넥앱 : 폰 GPS 설정 가져오기</h4>
+        <button  onclick="get_phone_gps_setting();" type="button" class="btn btn-primary">폰 GPS 설정 내놔~</button>
+    </div>
+
+    <div>
+        <h4>스넥앱 : 폰 GPS 설정 ON, OFF 하기 </h4>
+        <button  onclick="set_phone_gps('y');" type="button" class="btn btn-primary">폰 GPS ON ~</button>
+        <button  onclick="set_phone_gps('n');" type="button" class="btn btn-danger">폰 GPS OFF ~</button>
+    </div>
+
+    <div>
+        <h4>스넥앱 : 브라우져에서 앱 실행 하고 앱에서 해당 link 로 이동</h4>
+        <button  onclick="link('http://m.news.naver.com/main.nhn?mode=LSD&sid1=100&dummy=1703191247&componentId=1060259');" type="button" class="btn btn-danger">앱이동</button>
+        
+    </div>
+  </div>
+    
+
+  <script type="text/javascript">
+      $(function(){
+
+        var get_phone_type = function(){
+            var device= "";
+            var userAgent = navigator.userAgent || navigator.vendor || window.opera;
+            //"Mozilla/5.0 (Macintosh; Intel Mac OS X 10_11_4) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/50.0.2661.94 Safari/537.36"
+            if( userAgent.match( /iPad/i ) || userAgent.match( /iPhone/i ) || userAgent.match( /iPod/i ) ){
+                device= 'ios';
+            }else if( userAgent.match( /Android/i ) ){
+                device= 'android';
+            }else{
+                device= 'unknown'; 
+            }   
+            return device;
+        }
+
+        var send_to_ios = function(_url) {
+            var iframe = document.createElement("IFRAME");
+            iframe.style.display = 'none';
+            iframe.src = _url;
+            document.documentElement.appendChild(iframe);
+            // iframe.parentNode.removeChild(iframe);
+            
+            setTimeout(function(){
+                document.documentElement.removeChild(iframe);
+                iframe = null;
+            },1);
+        }
+
+        
+
+        // 폰의 gps 를 on, off로 설정하기
+        set_phone_gps = function(on){
+            // on :  "y", "n"
+            var device = get_phone_type();
+            if(device == "android") {
+                if (typeof CodeReader != "undefined"){
+                    CodeReader.setPhoneGps(on);  
+                }
+            }else if(device =="ios") {
+                var send_url = "toappsnack://set_phone_gps?on=" + on;
+                send_to_ios(send_url);
+            }else {
+                // web
+            }
+        }
+
+
+        // 폰의 gps 설정 가져오기
+        get_phone_gps_setting = function(){
+            var device = get_phone_type();
+            if(device == "android") {
+                if (typeof CodeReader != "undefined"){
+                    CodeReader.getPhoneGpsSetting("set_phone_gps_setting");  
+                }
+            }else if(device =="ios") {
+                var send_url = "toappsnack://get_phone_gps_setting?callback=set_phone_gps_setting"
+                send_to_ios(send_url);
+            }else {
+                // web
+            }
+        }
+        set_phone_gps_setting = function(on){
+            alert("web set_phone_gps_setting : " + on);
+        }
+
+
+        // 폰의 위치 가져오기
+        get_phone_location = function(){
+            var device = get_phone_type();
+            if(device == "android") {
+                if (typeof CodeReader != "undefined"){
+                    CodeReader.getPhoneLocation("set_phone_location");  
+                }
+            }else if(device =="ios") {
+                var send_url = "toappsnack://get_phone_location?callback=set_phone_location";
+                send_to_ios(send_url);
+            }else {
+                // web
+            }
+        }
+        set_phone_location = function(latitude, longitude){
+            alert("latitude : " + latitude +  "\n longitude : " + longitude);
+
+        }
+
+        $("#id-scan-btn").on("click", start_scan);
+
+
+        link = function(url){
+            var link = encodeURIComponent(url);
+            var device = get_phone_type();
+            if(device == "android") {
+                // android-app://<package_name>/<scheme>/<host_path>
+                // location.href = "mcmsnack://open?link=" + link;
+
+            }else if(device =="ios") {
+                var send_url = "mcmsnack://open?link=" + link;
+                alert(send_url);
+                location.href = send_url;
+            }else {
+                // web
+            }
+
+        }
+
+    });
+
+  </script>
+    
+    
+  </body>
+</html>
