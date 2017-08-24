@@ -1,0 +1,136 @@
+
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+<meta charset="utf-8" />
+<meta name="viewport" content="user-scalable=yes, initial-scale=1.0, maximum-scale=5.0, minimum-scale=1.0, width=device-width" />
+
+
+<title>서울우유협동조합 모바일</title>
+
+
+
+<script language="javascript">
+	var ADMIN_IMAGES_CONF = "/static_root/admin/images"; 				// 관리자 이미지 경로
+	var ADMIN_CSS_CONF = "/static_root/admin/css";						// 관리자 CSS 경로	
+	var ADMIN_INC_CONF = "/static_root/admin/inc";						// 관리자 공통jsp 경로	
+	var ADMIN_JS_CONF = "/static_root/admin/js";						// 관리자 JS 경로
+	
+	var DEFAULT_PAGE_SIZE_CONF = "10";		// 기본 페이지 사이즈
+	
+	var CURR_PAGE_CONF = "1";						// 현재 페이지
+	var GROUP_SIZE_CONF = "10";					// 기본 페이지 사이즈 그룹
+	var ADMIN_MAIN_CONF = "/admin/index.do";					// 관리자 메인페이지
+	var FRONT_MAIN_CONF = "/main.do";					// 사용자 메인페이지
+	var MOBILE_MAIN_CONF = "/mobile/main.do";					// 사용자 메인페이지
+	var COMMON_JS_CONF = "/static_root/common/js";						// 공통 JS 경로
+	var JS_CALENDAR_CONF = "/static_root/common/js/calendar";					// 달력 JS 경로
+	
+	var FRONT_IMAGES_CONF = "/static_root/user/images";				// 사용자 이미지 경로 
+	var FRONT_CSS_CONF = "/static_root/user/css";						// 사용자 CSS 경로  
+	var FRONT_INC_CONF = "/static_root/user/inc";						// 사용자 공통 JSP 경로
+	var FRONT_JS_CONF = "/static_root/user/js";						// 사용자 JS 경로
+	
+	var MOBILE_IMAGES_CONF = "/static_root/mobile/images";				// 모바일 이미지 경로 
+	var MOBILE_CSS_CONF = "/static_root/mobile/css";					// 모바일 CSS 경로  
+	var MOBILE_INC_CONF = "/static_root/mobile/mobile/inc";					// 모바일 공통 JSP 경로
+	var MOBILE_JS_CONF = "/static_root/mobile/js";						// 모바일 JS 경로
+	
+	var UPLOAD_FILE_CONF = "/static_root/userUpload/";					// 파일 저장 경로(웹경로)
+	var FILE_DOWN_ROOT_CONF = "D:\webPro\seoulMilk\WebContent\static_root";			// 파일 다운 경로(서버 풀경로)
+	var EDITOR_INC_URL_CONF = "/cheditor";			// 에디터 경로	
+	var STATIC_ROOT_CONF ="/static_root/";					// 정적 페이지 경로
+	
+	var COMMON_IMAGES_CONF = "/static_root/common/images";				// 사용자 이미지 경로
+	var COMMON_CSS_CONF = "/static_root/common/css";					// 사용자 CSS 경로
+	var COMMON_INC_CONF = "/static_root/common/inc";					// 사용자 공통 JSP 경로
+	var COMMON_JS_CONF = "/static_root/common/js";						// 사용자 JS 경로
+	
+	var LOGIN_ID = "";			
+</script>
+<link rel="stylesheet" type="text/css" href="/static_root/mobile/css/common.css" />
+<link href="http://ajax.googleapis.com/ajax/libs/jqueryui/1.8/themes/base/jquery-ui.css" rel="stylesheet" type="text/css"/>
+<script type="text/javascript" src="/static_root/mobile/js/_common.js"></script>
+<script type="text/javascript" src="/static_root/mobile/js/_link.js"></script>
+<script src="http://ajax.googleapis.com/ajax/libs/jquery/1.7/jquery.min.js"></script>
+<script src="http://ajax.googleapis.com/ajax/libs/jqueryui/1.8/jquery-ui.min.js"></script>
+<script type="text/javascript" src="/static_root/mobile/js/jqueryPagingMobile.js"></script><!-- 페이징  -->
+<script type="text/javascript" src="/static_root/common/js/common.js"></script> <!--  공통  js  -->
+<script type="text/javascript" src="/static_root/common/js/date.js"></script> <!--  공통  js  -->
+<script type="text/javascript" src="/static_root/common/js/fileupload.js"></script><!-- 파일업로드   -->
+<script type="text/javascript" src="/static_root/common/js/fileDownLoad.js"></script> <!--  파일 다운로드  스크립트   -->
+<script type="text/javascript" src="/static_root/common/js/calendar_beans_v2.0.js" ></script><!-- calendar_beans_v2.0.js(월 달력) 인클루드  -->	
+<script type="text/javascript" src="/cheditor/cheditor.js" ></script><!-- cheditor 인클루드  -->
+
+
+<script language="javascript">
+	function fnVersion(){
+		var ua = navigator.userAgent.toLowerCase();
+		if (0 <= ua.indexOf("android")) {
+			$("#android").show();
+		}else{
+			$("#ios").show();
+		}
+
+	}
+</script>
+</head>
+<body class="loginBody" onload="fnVersion();">
+	<div id="wrap">
+		<!-- 상단영역 -->
+		<!-- 상단영역 -->
+		<div id="top"><a href="/common/common.do?jsp_path=mobile/old"><img src="/static_root/mobile/images/top_logo.png" width="219" height="31" alt="서울우유협동조합" title="서울우유협동조합" /></a></div>
+		<!-- 상단영역 끝 -->
+		
+		<!-- 상단영역 -->
+		<ul id="top">
+			<li class="topL"><a href="/common/common.do?jsp_path=mobile/old"><img src="/static_root/mobile/images/top_btnHome.png" width="33" height="28" alt="홈화면" title="홈화면" /></a></li>
+			<li class="topC"><a href="/common/common.do?jsp_path=mobile/old"><img src="/static_root/mobile/images/top_logo.png" width="219" height="31" alt="서울우유협동조합" title="서울우유협동조합" /></a></li>
+			
+		</ul>
+
+		<!-- 상단영역 끝 -->
+
+			<!-- 본문영역 /////////////////////////////////////////////////////////////////////////////////////////////////////////////////// -->
+
+			<div id="content">
+				
+				<div class="login">
+					<dl class="loginTop">
+						<dt><img src="/static_root/mobile/images/login_topL.png" width="157" height="63" alt="" title="" /></dt>
+						<dd><img src="/static_root/mobile/images/login_topR.png" width="115" height="62" alt="" title="" /></dd>
+					</dl>
+					<div class="loginTitle"><img src="/static_root/mobile/images/info_title.png" width="99" height="46" alt="Login" title="Login" /></div>
+
+					<div class="infoArea">
+                    	<strong id="android" style="display:none;">
+                    		<p>
+                    		조합현황확인 시스템이 새로이 개발되었습니다. <br/><br/>
+                    		이에 따라 기존에 설치된 ‘서울우유 낙농정보’는 사용이 불가하오니 play스토어 또는 앱 스토어에서 새로운 ‘서울우유 낙농정보’를 설치하여 사용하시기 바랍니다.<br/><br/>
+                    		로그인 아이디/패스워드 분실이나 문의사항이 있을 시 관리자에게 연락 바랍니다.<br/><br/>
+                    		낙농정책실 낙농사이트 관리자<br/>
+                    		Tel. <a href="tel:02-490-8310">02-490-8310</a><br/>
+                    		<!-- Hp. <a href="tel:010-4695-9887">010-4695-9887</a>  -->
+                    	</p>
+                    	</strong>
+			<strong id="ios" style="display:none;">
+                    		<p>
+                    		조합현황확인 시스템이 새로이 개발되었습니다. <br/><br/>
+                    		이에 따라 기존에 설치된 ‘서울우유 낙농정보’는 사용이 불가하오니 새로운 ‘서울우유 낙농정보’를 설치하여 사용하시기 바랍니다.<br/><br/>
+				<!-- <a href="itms-services://?action=download-manifest&url=https://sdcmk.seoulmilk.co.kr/SeoulDairyCooperativeApp.plist">서울우유 낙농정보 앱 설치하기</a><br/><br/>  -->
+
+				<a href="itms-services://?action=download-manifest&url=https://dojo8888.github.io/ios_adhoc/milk/SeoulDairyCooperativeApp.plist">TEST - 서울우유 낙농정보 앱 설치하기</a><br/><br/> 
+
+				로그인 아이디/패스워드 분실이나 문의사항이 있을 시 관리자에게 연락 바랍니다.<br/><br/>
+                    		낙농정책실 낙농사이트 관리자<br/>
+                    		Tel. <a href="tel:02-490-8310">02-490-8310</a><br/>
+                    		<!-- Hp. <a href="tel:010-4695-9887">010-4695-9887</a>  -->
+                    	</p>
+                    	</strong>
+                    </div>
+				</div>
+			</div>
+			<!-- 본문영역 끝 //////////////////////////////////////////////////////////////////////////////////////////////////////////////////// -->
+	</div>
+</body>
+</html>
