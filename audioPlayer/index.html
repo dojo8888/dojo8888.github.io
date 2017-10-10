@@ -46,19 +46,26 @@
                      {"title": "재생목록 4", "url": "https://dojo8888.github.io/audioPlayer/audio4.mp3"}]
 
             // 아이폰 음악 플레이어 재생 시작
-         if (window.webkit && window.webkit.messageHandlers && window.webkit.messageHandlers.AudioStart){
-            window.webkit.messageHandlers.AudioStart.postMessage(playlist);   
-            
-            // 현 재생 타임  , 총 재생 시간 확인
-            setInterval(function(){ 
+            if (window.webkit && window.webkit.messageHandlers && window.webkit.messageHandlers.AudioStart){
+               window.webkit.messageHandlers.AudioStart.postMessage(playlist);   
+               // 현 재생 타임  , 총 재생 시간 확인
+               startTimer()
+            }
+         }
+
+
+         function startTimer(){
+            if (!currentTimer){
+               currentTimer = setInterval(function(){ 
                   CurrentTime(); // 현 재생 타임
                   currentTimeTag.innerText = audioCurrentTimeValue; // 현 재생 타임 값 표시
 
                   Duration(); // 총 재생 시간 확인
                   durationTimeTag.innerText = audioDurationValue;  // 총 재생 시간 값 표시
                   
-               }, 100);
-            }  
+               }, 300);   
+            }
+            
          }
 
          // 총 재생 길이
@@ -93,6 +100,17 @@
          function NextTrack(){
             if (window.webkit && window.webkit.messageHandlers && window.webkit.messageHandlers.NextTrack){
               window.webkit.messageHandlers.NextTrack.postMessage({});  
+            }
+         }
+
+         function iOSAudioStarted(){
+            startTimer()
+         }
+
+         function iOSAudioStopped(){
+            if (currentTimer){
+               clearInterval(currentTimer);   
+               currentTimer = false;
             }
          }
 
