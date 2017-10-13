@@ -1,7 +1,7 @@
 <!doctype html>
 <html>
    <head>
-      <title>Multi-Source Audio Player</title>
+      <title>Audio Player</title>
       <meta http-equiv="Content-type" content="text/html; charset=utf-8" />
       <meta name = "viewport" content = "width=device-width">
    </head>
@@ -17,11 +17,17 @@
          <a href="javascript:NextTrack()"><h1> NextTrack</h1></a> 
 
          <a href="javascript:PreviousTrack()"><h1> PreviousTrack</h1></a> 
+
+         <a href="javascript:SeekTo(50)"><h1> SeekTo 50%</h1></a> 
+
+
   </body>
 
 
   <script>     
-         // 재생 progress bar 표시용 타이머
+      // https://github.com/dojo8888/dojo8888.github.io/tree/master/audioPlayer
+
+      // 재생 progress bar 표시용 타이머
       var currentTimer;
 
       // 현재 플레이 중 인 아이템 재생 총 시간
@@ -40,6 +46,7 @@
             // 타이틀 , 재생음악 주소
             // http://mc.webworld.kr:81
             // http://192.168.25.48:8000
+            // https://dojo8888.github.io/audioPlayer
             var playlist = [{"title": "재생목록 1", "url": "https://dojo8888.github.io/audioPlayer/audio1.mp3"},
                      {"title": "재생목록 2", "url": "https://dojo8888.github.io/audioPlayer/audio2.mp3"},
                      {"title": "재생목록 3", "url": "https://dojo8888.github.io/audioPlayer/audio3.mp3"},
@@ -100,6 +107,12 @@
          function NextTrack(){
             if (window.webkit && window.webkit.messageHandlers && window.webkit.messageHandlers.NextTrack){
               window.webkit.messageHandlers.NextTrack.postMessage({});  
+            }
+         }
+
+         function SeekTo(percent){
+            if (window.webkit && window.webkit.messageHandlers && window.webkit.messageHandlers.SeekTo){
+              window.webkit.messageHandlers.SeekTo.postMessage(percent);  
             }
          }
 
