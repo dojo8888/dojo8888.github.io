@@ -110,10 +110,11 @@
          }
 
 
-         var audio = new Audio('https://dojo8888.github.io/audioPlayer/audio1.mp3');
+         var audio = new Audio();
          audio.addEventListener('ended', playNextTrack, false);
 
          function androidTestStart(){
+            audio.src = 'https://dojo8888.github.io/audioPlayer/audio1.mp3';
             audio.play();
             android_audioStart("재생목록 1번 제목");
          }
