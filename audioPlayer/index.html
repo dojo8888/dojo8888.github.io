@@ -121,8 +121,8 @@
 
          function android_audioStart(title){
             if (typeof androidBridge != "undefined" && androidBridge.audioStart) {
-               alert("androidBridge.audioStart");
                androidBridge.audioStart(title);
+               alert("androidBridge.audioStart");
             }else{
                alert("ERROR : androidBridge.audioStart UNDIFINED");
             }
@@ -131,8 +131,8 @@
          function android_audioStop(){
             audio.stop();
             if (typeof androidBridge != "undefined" && androidBridge.audioStop) {
-               alert("androidBridge.audioStop");
                   androidBridge.audioStop();
+                  alert("androidBridge.audioStop");
             }else{
                alert("ERROR : androidBridge.audioStop UNDIFINED");
             }
@@ -141,8 +141,8 @@
 
          var AV = {
             "androidStopAudio"  : function(){
-               alert("AP.androidStopAudio");
                audio.stop();
+               alert("AP.androidStopAudio");
             }
          }
 
