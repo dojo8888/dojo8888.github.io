@@ -123,9 +123,9 @@
          function android_audioStart(title){
             if (typeof androidBridge != "undefined" && androidBridge.audioStart) {
                androidBridge.audioStart(title);
-               alert("androidBridge.audioStart");
+               // alert("androidBridge.audioStart");
             }else{
-               alert("ERROR : androidBridge.audioStart UNDIFINED");
+               // alert("ERROR : androidBridge.audioStart UNDIFINED");
             }
          }
 
@@ -133,9 +133,9 @@
             audio.src = "";
             if (typeof androidBridge != "undefined" && androidBridge.audioStop) {
                   androidBridge.audioStop();
-                  alert("androidBridge.audioStop");
+                  // alert("androidBridge.audioStop");
             }else{
-               alert("ERROR : androidBridge.audioStop UNDIFINED");
+               // alert("ERROR : androidBridge.audioStop UNDIFINED");
             }
 
          }
@@ -143,7 +143,7 @@
          var AP = {
             "androidStopAudio"  : function(){
                audio.src = "";
-               alert("AP.androidStopAudio");
+               // alert("AP.androidStopAudio");
             }
          }
 
