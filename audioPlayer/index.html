@@ -129,12 +129,14 @@
          }
 
          function android_audioStop(){
+            audio.stop();
             if (typeof androidBridge != "undefined" && androidBridge.audioStop) {
                alert("androidBridge.audioStop");
                   androidBridge.audioStop();
             }else{
                alert("ERROR : androidBridge.audioStop UNDIFINED");
             }
+
          }
 
          var AV = {
