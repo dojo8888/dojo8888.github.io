@@ -120,7 +120,7 @@
 
 
          function android_audioStart(title){
-            if (androidBridge && androidBridge.audioStart) {
+            if (typeof androidBridge != "undefined" && androidBridge.audioStart) {
                alert("androidBridge.audioStart");
                androidBridge.audioStart(title);
             }else{
@@ -129,7 +129,7 @@
          }
 
          function android_audioStop(){
-            if (androidBridge && androidBridge.audioStop) {
+            if (typeof androidBridge != "undefined" && androidBridge.audioStop) {
                alert("androidBridge.audioStop");
                   androidBridge.audioStop();
             }else{
