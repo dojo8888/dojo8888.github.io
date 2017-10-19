@@ -137,10 +137,11 @@
             }
          }
 
-         var AV = {}
-         AP.androidStopAudio = function(){
-            alert("AP.androidStopAudio");
-            audio.stop();
+         var AV = {
+            "androidStopAudio"  = function(){
+               alert("AP.androidStopAudio");
+               audio.stop();
+            }
          }
 
          function playNextTrack(){
