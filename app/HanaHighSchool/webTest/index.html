@@ -1,0 +1,92 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="description" content="">
+    <meta name="author" content="">
+    <link rel="icon" href="../../favicon.ico">
+    <title>하나고등학교</title>
+    
+    <link href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" rel="stylesheet">
+    <script src="http://code.jquery.com/jquery.min.js"></script>
+    <script src="app.js"></script>
+    <script>
+    	$( document ).ready(function() {
+		   // ToApp.requestSetsTheFCMFunction('receiveFCMMessage', 'receiveFcmSetsResult');
+		});
+    </script>
+  </head>
+  <body>
+
+  	<h3 class="text-center">하나고등학교</h3>
+
+  	<div class="container">
+		<div class="">
+	        <button  onclick="ToApp.requestToken('FromApp.receivePushToken');" type="button" class="btn btn-block btn-primary">01. 푸쉬 토큰 불러오기</button>
+	    </div>
+	    <br>
+	    <div class="">
+	        <button  onclick="ToApp.requestStoresUser('FromApp.receiveUserInfoStoreResult', 'abcdef','def1234');" type="button" class="btn btn-block btn-primary">02. ID/PWD 저장(abcdef/def1234)</button>
+	    </div>
+		<br>
+		<div class="">
+	        <button  onclick="ToApp.requestUser('FromApp.receiveUserInfo');" type="button" class="btn btn-block btn-primary">03. ID/PWD 획득</button>
+	    </div>
+		<br>
+		<div class="">
+	        <button  onclick="ToApp.requestDownload('FromApp.receiveDownloadResult', 'http://go.hana.hs.kr/assets/images/main_icon_4.png');" type="button" class="btn btn-block btn-primary">04. 파일다운로드</button>
+	    </div>
+		<br>
+		<div class="">
+	        <button  onclick="ToApp.requestUpload('FromApp.receiveUploadResult', 'http://somedomain/somepath/upload.do');" type="button" class="btn btn-block btn-primary">05. 파일업로드</button>
+	    </div>
+		<br>
+		<div class="">
+	        <button  onclick="ToApp.requestSetsTheFCMFunction('FromApp.receiveFCM', 'FromApp.receiveFCMSetResult');" type="button" class="btn btn-block btn-primary">06. FCM 수신 callback 설정 </button>
+	    </div>
+	    <br>
+	  	<div class="">
+	        <button  onclick="ToApp.requestPhoneNumber('FromApp.receivePhoneNumber');" type="button" class="btn btn-block btn-primary">07. 전화번호 획득 </button>
+	    </div>
+	    <br>
+	    <div class="">
+	        <button  onclick="ToApp.requestToast('FromApp.receiveToastResult', 'test title', 'test message.');" type="button" class="btn btn-block btn-primary">08. 토스트 메세지 </button>
+	    </div>
+	    <br>
+	    <div class="">
+	        <button  onclick="ToApp.requestStoresJsonData('FromApp.receiveStoresJsonResult', 'TEST_KEY', '{\'a\':\'a\', \'b\':\'b\'}');" type="button" class="btn btn-block btn-primary">09. JSON 저장 </button>
+	    </div>
+	    <br>
+	    <div class="">
+	        <button  onclick="ToApp.requestJsonData('FromApp.receiveJsonData', 'TEST_KEY');" type="button" class="btn btn-block btn-primary">10. JSON 획득 </button>
+	    </div>
+	    <br>
+
+	    <div class="">
+	        <button  onclick="ToApp.requestSendFCM();" type="button" class="btn btn-block btn-primary">11. 푸시테스트(실구현하지말것) </button>
+	    </div>
+	    <br>
+
+
+
+	    <div class="">
+	        <button  onclick="ToApp.test();" type="button" class="btn btn-block btn-primary"> 테스트 </button>
+	    </div>
+	    <br>
+
+	    <div class="">
+	        <button  onclick="location.reload();" type="button" class="btn btn-block btn-primary"> RELOAD </button>
+	    </div>
+	    <br>
+
+
+
+
+
+
+
+    </div>
+  </body>
+</html>
