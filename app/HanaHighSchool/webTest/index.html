@@ -10,11 +10,11 @@
     <title>하나고등학교</title>
     
     <link href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" rel="stylesheet">
-    <script src="http://code.jquery.com/jquery.min.js"></script>
+    <script src="https://ajax.aspnetcdn.com/ajax/jQuery/jquery-3.3.1.min.js"></script>
     <script src="app.js"></script>
     <script>
     	$( document ).ready(function() {
-		   // ToApp.requestSetsTheFCMFunction('receiveFCMMessage', 'receiveFcmSetsResult');
+		   ToApp.requestSetsTheFCMFunction('receiveFCMMessage', 'receiveFcmSetsResult');
 		});
     </script>
   </head>
@@ -66,13 +66,6 @@
 
 	    <div class="">
 	        <button  onclick="ToApp.requestSendFCM();" type="button" class="btn btn-block btn-primary">11. 푸시테스트(실구현하지말것) </button>
-	    </div>
-	    <br>
-
-
-
-	    <div class="">
-	        <button  onclick="ToApp.test();" type="button" class="btn btn-block btn-primary"> 테스트 </button>
 	    </div>
 	    <br>
 
