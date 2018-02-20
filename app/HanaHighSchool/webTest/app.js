@@ -17,7 +17,7 @@ isAndroid = (function(){
 })();
 
 isIOS = (function(){
-	return deviceType=="ios" && window.webkit && window.webkit.messageHandlers;
+	return deviceType=="ios" && typeof window.webkit != "undefined" && typeof window.webkit.messageHandlers != "undefined";
 })();
 
 // APP -> WEB
