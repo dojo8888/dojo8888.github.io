@@ -18,7 +18,7 @@
                                 <key>bundle-identifier</key>
                                 <string>isaw.isawviewerII</string>
                                 <key>bundle-version</key>
-                                <string>2.0.2.0</string>
+                                <string>2.0.2</string>
                                 <key>kind</key>
                                 <string>software</string>
                                 <key>title</key>
@@ -28,5 +28,3 @@
         </array>
 </dict>
 </plist>
-
-
