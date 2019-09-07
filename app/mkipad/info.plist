@@ -2,32 +2,42 @@
 <!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
 <plist version="1.0">
 <dict>
-        <key>items</key>
-        <array>
-                <dict>
-                        <key>assets</key>
-                        <array>
-                                <dict>
-                                        <key>kind</key>
-                                        <string>software-package</string>
-                                        <key>url</key>
-                                        <string>http://15.164.52.85:10000/test/app2.ipa</string>
-                                </dict>
-                        </array>
-                        <key>metadata</key>
-                        <dict>
-                                <key>bundle-identifier</key>
-                                <string>kr.rapids.app.test</string>
-                                <key>bundle-version</key>
-                                <string>1.0</string>
-                                <key>kind</key>
-                                <string>software</string>
-                                <key>title</key>
-                                <string>app</string>
-                        </dict>
-                </dict>
-        </array>
+	<key>items</key>
+	<array>
+		<dict>
+			<key>assets</key>
+			<array>
+				<dict>
+					<key>kind</key>
+					<string>software-package</string>
+					<key>url</key>
+					<string>https://dl.dropbox.com/s/g0ah8tk3sdne38u/MICHALE_iPad.ipa</string>
+				</dict>
+				<dict>
+					<key>kind</key>
+					<string>display-image</string>
+					<key>url</key>
+					<string>https://dojo8888.github.io/app/mkipad/57.png</string>
+				</dict>
+				<dict>
+					<key>kind</key>
+					<string>full-size-image</string>
+					<key>url</key>
+					<string>https://dojo8888.github.io/app/mkipad/512.png</string>
+				</dict>
+			</array>
+			<key>metadata</key>
+			<dict>
+				<key>bundle-identifier</key>
+				<string>com.michaelkorsKR.MKtoolBox</string>
+				<key>bundle-version</key>
+				<string>1.0.0</string>
+				<key>kind</key>
+				<string>software</string>
+				<key>title</key>
+				<string>MK toolbox</string>
+			</dict>
+		</dict>
+	</array>
 </dict>
 </plist>
-
-
