@@ -1,0 +1,81 @@
+ <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1,maximum-scale=1">
+    <meta name="description" content="">
+    <meta name="author" content="">    
+    <title>KS-0</title>
+    
+    <link href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" rel="stylesheet">
+    <script src="https://ajax.aspnetcdn.com/ajax/jQuery/jquery-3.3.1.min.js"></script>
+    
+  </head>
+  <body>
+
+  	<div class="container-fluid">
+        <div class="col-sm-12">
+          <h1>WINDOW 0</h1>
+
+          <p>window.open() 또는 target=_blank 새창 열기</p>
+          <p>window.close() 현재창 닫기, 메인이 되는 창은 닫을 수 없음</p>
+
+          <ol>새창 열기 / 닫기
+            <li>현재창 닫기 <a href="javascript:window.close();">window.close()</a></li>
+            <li>새창 띄우기 <a href="javascript:window.open('./HotelKensington1.html');">window.open()</a></li>
+            <li>새창 띄우기 <a href="./HotelKensington1.html" target="_blank">target _blank</a></li>
+          </ol>
+
+          <ol>현재창 앞으로, 뒤로, 메인으로 이동
+            <li><a href="javascript:window.history.back();">뒤로</a></li>
+            <li><a href="javascript:window.history.forward();">앞으로</a></li>
+          </ol>
+
+          <ol>홈, 네이버
+            <li><a href="./HotelKensington.html">홈</a></li>
+            <li><a href="https://m.naver.com">네이버</a></li>
+          </ol>
+          
+
+          <li>앱에 JSON 데이타 저장</li>
+          <button class="btn btn-default" onclick="appRequest.setJson();">setJson</button>
+          <hr>
+
+          <li>앱에 저장된 JSON 데이타 획득</li>
+          <button class="btn btn-default" onclick="appRequest.getJson();">getJson</button>
+          <hr>
+
+          <li>앱에 저장된 푸쉬 토큰 획득</li>
+          <button class="btn btn-default" onclick="appRequest.getPushToken();">getPushToken</button>
+          <hr>
+
+          <li>앱에 저장된 위치 정보 획득</li>
+          <button class="btn btn-default" onclick="appRequest.getLocation();">getLocation</button>
+          <hr>
+
+          <li>앱에 버전 정보 획득</li>
+          <button class="btn btn-default" onclick="appRequest.getVersion();">getVersion</button>
+          <hr>
+
+          <li>앱 외부 브라우져로 URL 로드</li>
+          <button class="btn btn-default" onclick="appRequest.openUrlEx();">openUrlEx</button>
+          <hr>
+
+          <li>앱 내부 팝업 브라우져로 URL 로드</li>
+          <button class="btn btn-default" onclick="appRequest.openUrlPop();">openUrlPop</button>
+          <hr>
+
+          <li>앱 파일 다운로드</li>
+          <button class="btn btn-default" onclick="appRequest.fileDownload();">fileDownload</button>
+          <hr>          
+
+        </div>
+    </div>
+
+
+    <script src="./app.js"></script>
+
+    
+  </body>
+</html>
