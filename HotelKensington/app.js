@@ -97,4 +97,7 @@ var appRequest = {
           }
         postMessage("fileDownload",message);
     },
+    "shareURL" : () => {
+        postMessage("shareURL");
+    }
 }
