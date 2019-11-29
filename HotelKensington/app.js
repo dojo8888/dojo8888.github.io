@@ -93,11 +93,17 @@ var appRequest = {
     },
     "fileDownload" : () => {
         let message = {
-            "url" : "https://ani24like.com/img/ani/3566.jpg"
+            "url" : "https://myreviews4you.com/wp-content/uploads/2017/06/10.IU_.jpg"
           }
         postMessage("fileDownload",message);
     },
     "shareURL" : () => {
         postMessage("shareURL");
+    },
+    "closeWindow" : () => {
+        let message = {
+            "url" : "https://m.naver.com/"
+          }
+        postMessage("closeWindow",message);
     }
 }

@@ -18,24 +18,30 @@
         <div class="col-sm-12">
           <h1>WINDOW 1</h1>
 
+          <form action="" name="testPage">
+          <input id="addr" type="text" value="" placeholder="이동할 주소 입력">
+          <input type="submit" value="이동">
+          </form>
+
+
           <p>window.open() 또는 target=_blank 새창 열기</p>
           <p>window.close() 현재창 닫기, 메인이 되는 창은 닫을 수 없음</p>
 
-          <ol>새창 열기 / 닫기
+          <ul>새창 열기 / 닫기
             <li>현재창 닫기 <a href="javascript:window.close();">window.close()</a></li>
             <li>새창 띄우기 <a href="javascript:window.open('./HotelKensington1.html');">window.open()</a></li>
-            <li>새창 띄우기 <a href="./HotelKensington1.html" target="_blank">target _blank</a></li>
-          </ol>
+            <li>새창 띄우기 <a href="./HotelKensington0.html" target="_blank">target _blank</a></li>
+          </ul>
 
-          <ol>현재창 앞으로, 뒤로, 메인으로 이동
+          <ul>현재창 앞으로, 뒤로, 메인으로 이동
             <li><a href="javascript:window.history.back();">뒤로</a></li>
             <li><a href="javascript:window.history.forward();">앞으로</a></li>
-          </ol>
+          </ul>
 
-          <ol>홈, 네이버
+          <ul>홈, 네이버
             <li><a href="./HotelKensington.html">홈</a></li>
             <li><a href="https://m.naver.com">네이버</a></li>
-          </ol>
+          </ul>
           
 
           <li>앱에 JSON 데이타 저장</li>
@@ -66,15 +72,32 @@
           <button class="btn btn-default" onclick="appRequest.openUrlPop();">openUrlPop</button>
           <hr>
 
+          <li>현재 창 닫고, 부모창에서 로드하기 - 로그인팝업</li>
+          <button class="btn btn-default" onclick="appRequest.closeWindow();">closeWindow</button>
+          <hr>
+
           <li>앱 파일 다운로드</li>
           <button class="btn btn-default" onclick="appRequest.fileDownload();">fileDownload</button>
-          <hr>          
+          <hr>
+          
+          <li>현재 페이지 주소 공유하기</li>
+          <button class="btn btn-default" onclick="appRequest.shareURL();">shareURL</button>
+          <hr>
+
+          
 
         </div>
     </div>
 
 
     <script src="./app.js"></script>
+
+    <script>
+    $(document.testPage).submit(()=>{
+      location.href = $("#addr").val();
+      return false;
+    });
+    </script>
 
     
   </body>
