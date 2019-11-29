@@ -18,6 +18,12 @@
         <div class="col-sm-12">
           <h1>WINDOW 0</h1>
 
+          <form action="" name="testPage">
+          <input id="addr" type="text" value="" placeholder="이동할 주소 입력">
+          <input type="submit" value="이동">
+          </form>
+
+
           <p>window.open() 또는 target=_blank 새창 열기</p>
           <p>window.close() 현재창 닫기, 메인이 되는 창은 닫을 수 없음</p>
 
@@ -79,6 +85,13 @@
 
 
     <script src="./app.js"></script>
+
+    <script>
+    $(document.testPage).submit(()=>{
+      location.href = $("#addr").val();
+      return false;
+    });
+    </script>
 
     
   </body>
