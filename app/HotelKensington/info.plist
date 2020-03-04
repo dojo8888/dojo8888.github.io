@@ -19,11 +19,11 @@
                                 <key>bundle-identifier</key>
                                 <string>com.kensington.ios</string>
                                 <key>bundle-version</key>
-                                <string>1.0</string>
+                                <string>1.0.0</string>
                                 <key>kind</key>
                                 <string>software</string>
                                 <key>title</key>
-                                <string>HotelKensington</string>
+                                <string>켄싱턴호텔앤리조트</string>
                         </dict>
                 </dict>
         </array>
