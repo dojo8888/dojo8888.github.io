@@ -1,0 +1,80 @@
+ <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1,maximum-scale=1">
+    <meta name="description" content="">
+    <meta name="author" content="">    
+    <title>KS-4</title>
+    
+    <link href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" rel="stylesheet">
+    <script src="https://ajax.aspnetcdn.com/ajax/jQuery/jquery-3.3.1.min.js"></script>
+
+    <script type="text/javascript">
+
+    </script>
+    
+  </head>
+  <body>
+
+    <div class="container-fluid">
+        <div class="col-sm-12">
+
+          <h1>TEST1</h1>
+
+          <p id="agent"></p>
+
+          <button class="btn btn-default" onclick="javascript:location.reload();">RELOAD</button>
+          <hr>
+
+          <ol>새창 열기 / 닫기          
+            <li>새창 띄우기 <a href="javascript:window.open('http://m.naver.com');">window.open 다른 서비스 </a></li>
+            <li>새창 띄우기 <a href="javascript:window.open('./test2.html');">window.open 우리 서비스</a></li>
+            <li>새창 닫기 <a href="javascript:window.close();">newWindow.close()</a></li>
+          </ol>
+
+
+          <li>앱에 JSON 데이타 저장</li>
+          <button class="btn btn-default" onclick="appRequest.appSetJson('samplekey', JSON.stringify({'key1' : 'aaaa','key2' : 'bbbb'}));">appSetJson</button>
+          <hr>
+
+          <li>앱에 저장된 JSON 데이타 획득 (콜백)</li>
+          <button class="btn btn-default" onclick="appRequest.appGetJson('samplekey', 'appCallback.appGetJson');">appGetJson</button>
+          <hr>
+
+          <li>앱에 저장된 푸쉬 토큰 획득 (콜백)</li>
+          <button class="btn btn-default" onclick="appRequest.getPushToken('appCallback.getPushToken');">getPushToken</button>
+          <hr>
+
+          <li>앱에 버전 체크</li>
+          <button class="btn btn-default" onclick="appRequest.appVersionCheck('앱업데이트가 있습니다.', '1.0.0', '1.0.0', 'Y');">appVersionCheck</button>
+          <hr>
+
+          <li>앱 설정으로 이동</li>
+          <button class="btn btn-default" onclick="appRequest.goAppSetting();">goAppSetting</button>
+          <hr>
+
+          <li>앱 강제 종료</li>
+          <button class="btn btn-default" onclick="appRequest.appStop();">appStop</button>
+          <hr>
+
+          <li>웹 페이지 공유하기</li>
+          <button class="btn btn-default" onclick="appRequest.shareURL('https://m.naver.com');">appStop</button>
+          <hr>
+
+        </div>
+    </div>
+
+
+
+    <script src="./app.js"></script>
+
+    <script type="text/javascript">
+        document.getElementById("agent").innerText = navigator.userAgent || navigator.vendor || window.opera;
+    </script>
+
+
+    
+  </body>
+</html>
