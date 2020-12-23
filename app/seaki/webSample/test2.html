@@ -21,7 +21,7 @@
     <div class="container-fluid">
         <div class="col-sm-12">
 
-          <h1>TEST1</h1>
+          <h1>TEST2</h1>
 
           <p id="agent"></p>
 
@@ -40,7 +40,7 @@
           <hr>
 
           <li>앱에 저장된 JSON 데이타 획득 (콜백)</li>
-          <button class="btn btn-default" onclick="appRequest.appGetJson('samplekey', 'appCallback.getJson');">appGetJson</button>
+          <button class="btn btn-default" onclick="appRequest.appGetJson('samplekey', 'appCallback.appGetJson');">appGetJson</button>
           <hr>
 
           <li>앱에 저장된 푸쉬 토큰 획득 (콜백)</li>
@@ -55,12 +55,20 @@
           <button class="btn btn-default" onclick="appRequest.goAppSetting();">goAppSetting</button>
           <hr>
 
+          <li>본인인증 페이지 호출</li>
+          <button class="btn btn-default" onclick="appRequest.appPhoneAuth();">appPhoneAuth</button>
+          <hr>
+
+          <li>window.opener 함수 호출</li>
+          <button class="btn btn-default" onclick="appRequest.appOpenerCall('simpleAlert', JSON.stringify({code: '0000', message: '인증이 성공했습니다'}));">appOpenerCall</button>
+          <hr>
+
           <li>앱 강제 종료</li>
           <button class="btn btn-default" onclick="appRequest.appStop();">appStop</button>
           <hr>
 
           <li>웹 페이지 공유하기</li>
-          <button class="btn btn-default" onclick="appRequest.shareURL('https://m.naver.com');">appStop</button>
+          <button class="btn btn-default" onclick="appRequest.shareURL('https://m.naver.com');">shareURL</button>
           <hr>
 
         </div>

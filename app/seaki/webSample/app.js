@@ -39,6 +39,7 @@ var simpleAlert = (...options) => {
     alert(options.join(" + "));
 }
 
+
 // 따로 구현할 것
 var appCallback = {
     "appGetJson" : simpleAlert, 
@@ -98,7 +99,10 @@ var appRequest = {
         }
         postMessage("appVersionCheck",message);
     },
-    
+    // 본인인증 페이지 호출
+    "appPhoneAuth" : () => {
+        postMessage("appPhoneAuth");
+    },
     // 앱 설정으로 이동 (푸시 설정 등)
     "goAppSetting" : () => {
         postMessage("goAppSetting");
@@ -107,6 +111,17 @@ var appRequest = {
     // 앱 강제 종료
     "appStop": () => {
         postMessage("appStop");
+    },
+
+    // window.opener 함수 호출 대체
+    // @param funcName : 함수명
+    // @param args : array 형태의 함수 전달 args 
+    "appOpenerCall": (funcName, args) => {
+        let message = {
+            "funcName" : funcName,
+            "args" : args
+        }
+        postMessage("appOpenerCall",message);
     },
 
     // 웹 페이지 공유하기
