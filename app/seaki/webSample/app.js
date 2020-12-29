@@ -34,6 +34,8 @@ var postMessage = function(bridgeName, message) {
 // 필수 선언 구문 (END)
 
 
+
+
 // 따로 구현할 것
 var simpleAlert = (...options) => {
     alert(options.join(" + "));
@@ -100,9 +102,9 @@ var appRequest = {
         postMessage("appVersionCheck",message);
     },
     // 본인인증 페이지 호출
-    "appPhoneAuth" : () => {
-        postMessage("appPhoneAuth");
-    },
+    // "appPhoneAuth" : () => {
+    //     postMessage("appPhoneAuth");
+    // },
     // 앱 설정으로 이동 (푸시 설정 등)
     "goAppSetting" : () => {
         postMessage("goAppSetting");
@@ -116,13 +118,13 @@ var appRequest = {
     // window.opener 함수 호출 대체
     // @param funcName : 함수명
     // @param args : array 형태의 함수 전달 args 
-    "appOpenerCall": (funcName, args) => {
-        let message = {
-            "funcName" : funcName,
-            "args" : args
-        }
-        postMessage("appOpenerCall",message);
-    },
+    // "appOpenerCall": (funcName, args) => {
+    //     let message = {
+    //         "funcName" : funcName,
+    //         "args" : args
+    //     }
+    //     postMessage("appOpenerCall",message);
+    // },
 
     // 웹 페이지 공유하기
     // @param url : 공유할 페이지 주소

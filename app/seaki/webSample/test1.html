@@ -25,12 +25,17 @@
 
           <p id="agent"></p>
 
+          <p id="test"></p>
+
+          <h1><a href="http://devm.saeki.co.kr">http://devm.saeki.co.kr</a></h1>
+
           <button class="btn btn-default" onclick="javascript:location.reload();">RELOAD</button>
           <hr>
 
           <ol>새창 열기 / 닫기          
             <li>새창 띄우기 <a href="javascript:window.open('http://m.naver.com');">window.open 다른 서비스 </a></li>
             <li>새창 띄우기 <a href="javascript:window.open('./test2.html');">window.open 우리 서비스</a></li>
+            <li>새창 띄우기 <a href="javascript:window.open('./daumAddress.html');">window.open 다음주소검색</a></li>
             <li>새창 닫기 <a href="javascript:window.close();">newWindow.close()</a></li>
           </ol>
 
@@ -51,17 +56,24 @@
           <button class="btn btn-default" onclick="appRequest.appVersionCheck('앱업데이트가 있습니다.', '1.0.0', '1.0.0', 'Y');">appVersionCheck</button>
           <hr>
 
+          <li>앱에 버전 체크 신규 버전 있을때</li>
+          <button class="btn btn-default" onclick="appRequest.appVersionCheck('앱업데이트가 있습니다.', '1.0.1', '1.0.1', 'N');">appVersionCheck</button>
+          <hr>
+
+          <li>앱에 버전 체크 신규 버전 있을때 - 강제 종료</li>
+          <button class="btn btn-default" onclick="appRequest.appVersionCheck('앱업데이트가 있습니다.', '1.0.1', '1.0.1', 'Y');">appVersionCheck</button>
+          <hr>
           <li>앱 설정으로 이동</li>
           <button class="btn btn-default" onclick="appRequest.goAppSetting();">goAppSetting</button>
           <hr>
 
-          <li>본인인증 페이지 호출</li>
+          <!-- <li>본인인증 페이지 호출</li>
           <button class="btn btn-default" onclick="appRequest.appPhoneAuth();">appPhoneAuth</button>
-          <hr>
+          <hr> -->
 
-          <li>window.opener 함수 호출</li>
+          <!-- <li>window.opener 함수 호출</li>
           <button class="btn btn-default" onclick="appRequest.appOpenerCall('simpleAlert', JSON.stringify({code: '0000', message: '인증이 성공했습니다'}));">appOpenerCall</button>
-          <hr>
+          <hr> -->
 
           <li>앱 강제 종료</li>
           <button class="btn btn-default" onclick="appRequest.appStop();">appStop</button>
@@ -80,7 +92,16 @@
 
     <script type="text/javascript">
         document.getElementById("agent").innerText = navigator.userAgent || navigator.vendor || window.opera;
+
+        var test = function(text) {
+          document.getElementById("test").innerText = text;
+        }
+
+        var setAddress = function(a, b) {
+          alert(a + "," + b);
+        }
     </script>
+
 
 
     
