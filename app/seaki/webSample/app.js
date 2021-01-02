@@ -133,5 +133,13 @@ var appRequest = {
             "url" : url
         }
         postMessage("shareURL", message);
+    },
+    // 앱 바깥에서 해당 url 열기
+    // @param url : 페이지 주소
+    "appOpenExternal" : (url) => {
+        let message = {
+            "url" : url
+        }
+        postMessage("appOpenExternal", message);  
     }
 }
